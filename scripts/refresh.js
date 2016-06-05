@@ -19,12 +19,15 @@ var printToJS = function (tokens, file) {
 }
 
 var tokens = youtube.fetchTokenFromFile();
-console.log(tokens['access_token'])
-console.log(tokens['expiry_date'])
+//console.log(tokens['access_token'])
+//console.log(tokens['expiry_date'])
 //printToJS(tokens, 'token.js')
-printToJS(tokens, '/Users/savant/Sites/australia-4-dolphins/cfg/token.js');
 
 var new_tokens = youtube.refreshToken(tokens, function(){});
 if (new_tokens){
   console.log(new_tokens)
+  printToJS(new_tokens, '/Users/savant/Sites/australia-4-dolphins/cfg/token.js');
+}
+else{
+  console.log('Same Tokens. No update');
 }
